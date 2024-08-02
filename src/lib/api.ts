@@ -1,28 +1,66 @@
-import { Post } from "@/interfaces/post";
-import fs from "fs";
-import matter from "gray-matter";
-import { join } from "path";
+import clientPromise from "../../src/lib/mongodb";
+import Post from '../models/Post.js';
+import { ObjectId } from 'mongodb';
 
-const postsDirectory = join(process.cwd(), "_posts");
-
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+interface Post {
+  _id: ObjectId;
+  title: string;
+  excerpt: string;
+  coverImage: string;
+  date: string;
+  author: {
+    name: string;
+    picture: string;
+  };
+  ogImage: {
+    url: string;
+  };
+  content: string;
+  slug: string;
 }
 
-export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  return { ...data, slug: realSlug, content } as Post;
+export async function getPostSlugs() {
+  const client = await clientPromise;
+  const db = client.db("CMS");
+  const posts = await db.collection('Posts').find({}, { projection: { slug: 1 } }).toArray();
+  return posts.map(post => post.slug);
 }
 
-export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+export async function getPostBySlug(slug: string) {
+  const client = await clientPromise;
+  const db = client.db("CMS");
+  const post = await db.collection('Posts').findOne({ slug });
+  console.log(post);
+  if (!post) {
+    throw new Error(`No post found for slug: ${slug}`);
+  }
+  return post;
 }
+
+export async function getAllPosts(): Promise<Post[]> {
+  const client = await clientPromise;
+  const db = client.db("CMS");
+  const posts = await db.collection('Posts').find({}).sort({ date: -1 }).toArray();
+  
+  // Log raw posts from the database
+  console.log('Raw posts from the database:', posts);
+  
+  const transformedPosts = posts.map(post => ({
+    _id: post._id,
+    title: post.title,
+    excerpt: post.excerpt,
+    coverImage: post.coverImage,
+    date: post.date,
+    author: post.author,
+    ogImage: post.ogImage,
+    content: post.content,
+    slug: post.slug,
+  }));
+  
+  // Log transformed posts
+  console.log('Transformed posts:', transformedPosts);
+  
+  return transformedPosts;
+}
+
+

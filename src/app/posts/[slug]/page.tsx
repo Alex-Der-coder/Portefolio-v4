@@ -10,7 +10,7 @@ import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
 
 export default async function Post({ params }: Params) {
-  const post = getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     return notFound();
@@ -43,8 +43,21 @@ type Params = {
   };
 };
 
-export function generateMetadata({ params }: Params): Metadata {
-  const post = getPostBySlug(params.slug);
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export async function getPostData(slug: string) {
+  const post = await getPostBySlug(slug);
+  return post;
+}
+
+export async function generateMetadata({ params }: Params) {
+  const post = await getPostData(params.slug);
 
   if (!post) {
     return notFound();
@@ -58,13 +71,5 @@ export function generateMetadata({ params }: Params): Metadata {
       title,
       images: [post.ogImage.url],
     },
-  };
-}
-
-export async function generateStaticParams() {
-  const posts = getAllPosts();
-
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  } as Metadata;
 }

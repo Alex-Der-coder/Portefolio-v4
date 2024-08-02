@@ -1,4 +1,6 @@
 import { CMS_NAME } from "@/lib/constants";
+import Link from "next/link";
+import Theme from "./Theme_button"
 
 export function Intro() {
   return (
@@ -8,14 +10,15 @@ export function Intro() {
       </h1>
       <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
         A statically generated blog example using{" "}
-        <a
+        <Link
           href="https://nextjs.org/"
           className="underline hover:text-blue-600 duration-200 transition-colors"
         >
           Next.js
-        </a>{" "}
+        </Link>{" "}
         and {CMS_NAME}.
       </h4>
+        <Theme/>
     </section>
   );
 }
