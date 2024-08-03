@@ -1,7 +1,7 @@
 import Container from "@/app/_components/container";
 import { EXAMPLE_PATH } from "@/lib/constants";
 import cn from "classnames";
-
+import Link from 'next/link'
 type Props = {
   preview?: boolean;
 };
@@ -19,23 +19,23 @@ const Alert = ({ preview }: Props) => {
           {preview ? (
             <>
               This page is a preview.{" "}
-              <a
+              <Link
                 href="/api/exit-preview"
                 className="underline hover:text-teal-300 duration-200 transition-colors"
               >
                 Click here
-              </a>{" "}
+              </Link>{" "}
               to exit preview mode.
             </>
           ) : (
             <>
               The source code for this blog is{" "}
-              <a
-                href={`https://github.com/vercel/next.js/tree/canary/examples/${EXAMPLE_PATH}`}
+              <Link
+                href={`https://github.com/Alex-Der-coder/nextjs-mongodb-cloudinary-blog-starter`}
                 className="underline hover:text-blue-600 duration-200 transition-colors"
               >
                 available on GitHub
-              </a>
+              </Link>
               .
             </>
           )}
