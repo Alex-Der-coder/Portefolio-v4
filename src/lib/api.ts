@@ -57,9 +57,7 @@ export async function getAllPosts(): Promise<Post[]> {
     slug: post.slug,
   }));
   
-  // Log transformed posts
-  console.log('Transformed posts:', transformedPosts);
-  
+
   return transformedPosts;
 }
 
