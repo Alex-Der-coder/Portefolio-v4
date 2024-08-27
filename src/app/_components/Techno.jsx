@@ -11,7 +11,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "./ui/Pagination";
+} from "./ui/pagination";
 
 const Techno = ({ data = [] }) => {
   const dataPerPage = 6; 
