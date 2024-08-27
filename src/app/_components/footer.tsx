@@ -1,33 +1,57 @@
-import Container from "@/app/_components/container";
-import { EXAMPLE_PATH } from "@/lib/constants";
-import Link from 'next/link'
+import React from 'react';
+import { LinkPreview } from "./ui/link-preview";
 
-export function Footer() {
-  return (
-    <footer className="bg-neutral-50 border-t border-neutral-200 dark:bg-slate-800">
-      <Container>
-        <div className="py-28 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-[2.5rem] font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
-            Statically Generated with Next.js.
-          </h3>
-          <div className="flex flex-col lg:flex-row justify-center items-center lg:pl-4 lg:w-1/2">
-            <a
-              href="https://nextjs.org/docs/app/building-your-application/routing/layouts-and-templates"
-              className="mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-200 transition-colors mb-6 lg:mb-0"
-            >
-              Read Documentation
-            </a>
-            <Link
-              href={`https://github.com/Alex-Der-coder/nextjs-mongodb-cloudinary-blog-starter`}
-              className="mx-3 font-bold hover:underline"
-            >
-              View on GitHub
-            </Link>
-          </div>
-        </div>
-      </Container>
-    </footer>
-  );
+const Footer = () => {
+
+    const getCurrentYear = () => {
+        return new Date().getFullYear();
+    }
+
+
+    return(
+        <footer  role="contentinfo" className='flex flex-row justify-between text-white bg-background ml-[-1%] pl-[2%] mb-[-1%] mr-[-0.5%]'>
+            <div className='flex max-[640px]:flex-wrap max-[640px]:flex-wrap  max-[640px]:flex-col-reverse ' >
+            <div>
+                <div className='col-row p-[2rem]'>
+                    <h3 className=' bg-gradient-to-r from-yellow-300 to-red-700 bg-clip-text text-transparent'>Lien Utile</h3>
+                    <ul>
+                        <li className='pb-[0.55rem]' ><LinkPreview className='list-none text-foreground no-underline' url="https://uicolors.app/create">Color Generator</LinkPreview></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://animista.net/">Animasta</LinkPreview ></li>
+                        <li className='pb-[0.55rem]' ><LinkPreview  className='list-none text-foreground no-underline' url="https://www.canva.com/">Canva</LinkPreview ></li>
+                        <li className='pb-[0.55rem]' ><LinkPreview  className='list-none text-foreground no-underline' url="https://fontawesome.com/">FontAwesome</LinkPreview ></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://www.svgrepo.com/">SvGPro</LinkPreview ></li>
+                    </ul>
+                    <p className='text-foreground'>© Portfolio de Alexandre De Roeck {getCurrentYear()}</p>
+                </div>
+            </div>
+
+            <div>
+                <div className='col-row p-[2rem]'>
+                    <h3  className=' bg-gradient-to-r from-yellow-300 to-red-700 bg-clip-text text-transparent'>Lien Utile</h3>
+                    <ul>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://www.figma.com">Figma</LinkPreview ></li>
+                        <li className='pb-[0.55rem]' ><LinkPreview  className='list-none text-foreground no-underline' url="https://www.w3schools.com/">W3schools</LinkPreview ></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://validator.w3.org/">W3C Validator</LinkPreview ></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://github.com/">Github</LinkPreview ></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://vercel.com/">Vercel</LinkPreview ></li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+            <div className='col-row p-[2rem]'>
+                    <h3  className=' bg-gradient-to-r from-yellow-300 to-red-700 bg-clip-text text-transparent'>Lien Utile</h3>
+                    <ul>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground  no-underline' url="https://uiverse.io">Uiverse</LinkPreview ></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://codepen.io/">Code Pen</LinkPreview ></li>
+                        <li className='pb-[0.55rem]'><LinkPreview  className='list-none text-foreground no-underline' url="https://www.skeleton.dev/">Skeleton dev</LinkPreview ></li>
+                        <li className='pb-[0.55rem]' ><LinkPreview  className='list-none text-foreground no-underline' url="https://jsben.ch/">JSBench</LinkPreview ></li>
+                        <li className='pb-[0.55rem]' ><LinkPreview  className='list-none text-foreground no-underline' url="https://www.minifier.org/">Minifier code</LinkPreview ></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </footer>
+    )
 }
 
 export default Footer;
