@@ -3,12 +3,12 @@ import WhoIAm from "../_components/WhoIAm";
 import Techno from "../_components/Techno";
 import AccordionDemo from "../_components/AccordionDemo";
 import cloudinary from '../../lib/cloudinary';
-import ImageProps  from "../../lib/serveur"; 
+
 
 // Fetching data in a server component
 async function fetchData() {
   try {
-    const res = await fetch('https://portefoliov3-beta.vercel.app/api/projet', { cache: 'no-store' });
+    const res = await fetch('https://portefoliov3-beta.vercel.app/api/projet');
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }
