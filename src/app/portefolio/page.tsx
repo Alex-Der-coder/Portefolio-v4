@@ -3,7 +3,7 @@ import WhoIAm from "../_components/WhoIAm";
 import Techno from "../_components/Techno";
 import AccordionDemo from "../_components/AccordionDemo";
 import cloudinary from '../../lib/cloudinary';
-import { ImageProps } from "../../lib/types";
+import ImageProps  from "../../lib/serveur"; 
 
 // Fetching data in a server component
 async function fetchData() {
@@ -60,7 +60,7 @@ interface Results {
     .sort_by("public_id", "desc")
     .max_results(400)
     .execute();
-  let reducedResults: ImageProps[] = [];
+
   
 console.log(results);
 const secureUrls = results.resources.map((resource: Resource) => resource.secure_url);
