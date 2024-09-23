@@ -37,7 +37,7 @@ const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
         // Envoi des données au backend pour la mise à jour du projet
-        const response = await fetch('http://localhost:3000/api/ProjetDelete', {
+        const response = await fetch('https://portefolio-v4.vercel.app/api/ProjetDelete', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

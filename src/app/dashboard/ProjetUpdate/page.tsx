@@ -35,8 +35,8 @@ const handleChange = (e: { target: { name: any; value: any; }; }) => {
 const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
-        // Envoi des données au backend pour la mise à jour du projet
-        const response = await fetch('http://localhost:3000/api/ProjetUpdate', {
+        // Envoi des données au backend pour la mise à jour du projet 
+        const response = await fetch('https://portefolio-v4.vercel.app/api/ProjetUpdate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
