@@ -8,7 +8,7 @@ import AccordionDemo from "../_components/AccordionDemo";
 // Fetching data in a server component
 async function fetchData() {
   try {
-    const res = await fetch('https://portefolio-v4.vercel.app/api/Projet');
+    const res = await fetch('https://github.com/Alex-Der-coder/Portefolio-v4/tree/main/src/app/api/Projet');
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }
