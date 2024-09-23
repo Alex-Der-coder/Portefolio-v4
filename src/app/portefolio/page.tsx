@@ -2,13 +2,13 @@ import React, { Suspense } from "react";
 import WhoIAm from "../_components/WhoIAm";
 import Techno from "../_components/Techno";
 import AccordionDemo from "../_components/AccordionDemo";
-import cloudinary from '../../lib/cloudinary';
+
 
 
 // Fetching data in a server component
 async function fetchData() {
   try {
-    const res = await fetch('https://portefoliov3-beta.vercel.app/api/projet');
+    const res = await fetch('http://localhost:3000/api/Projet');
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -52,28 +52,6 @@ interface Results {
   resources: Resource[];
 }
 
-
-
- async function getData() {
-  const results = await cloudinary.v2.search
-    .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
-    .sort_by("public_id", "desc")
-    .max_results(400)
-    .execute();
-
-  
-console.log(results);
-const secureUrls = results.resources.map((resource: Resource) => resource.secure_url);
-console.log(secureUrls);
-
-
-}
-
-getData()
-
-
-
-  
 export default async function Portefolio() {
   const data = await fetchData();
   

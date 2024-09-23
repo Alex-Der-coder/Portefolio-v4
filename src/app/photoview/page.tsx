@@ -8,8 +8,6 @@ export default async function Photoview() {
 
   const data = await getData();
 
-
-
   return (
       <MainPhotoview  images={data}/>
   );
