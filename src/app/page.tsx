@@ -4,6 +4,8 @@ import { HeroPost } from "@/app/_components/hero-post";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
 
+export const revalidate = 60;
+
 export default async function Index() {
 
   const allPosts = await getAllPosts();
