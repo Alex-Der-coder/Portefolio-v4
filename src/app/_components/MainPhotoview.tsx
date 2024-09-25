@@ -69,7 +69,7 @@ const Main: NextPage<MainProps> = ({ images }) => {
   return (
     <>
       <Head>
-        <title>Next.js Conf 2022 Photos</title>
+        <title>Next.js Photoview 2024 Photos</title>
         <meta
           property="og:image"
           content="https://nextjsconf-pics.vercel.app/og-image.png"
@@ -94,24 +94,15 @@ const Main: NextPage<MainProps> = ({ images }) => {
               2022 Event Photos
             </h1>
             <p className="max-w-[40ch] text-foreground sm:max-w-[32ch]">
-              Our incredible Next.js community got together in San Francisco for
-              our first ever in-person conference!
+              Our incredible Wedding with my wife !
             </p>
-            <Link
-              className="pointer z-10 mt-6 rounded-lg border border-white bg-white px-3 py-2 text-sm font-semibold text-black transition hover:bg-white/10 hover:text-white md:mt-4"
-              href="https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <h2>Clone and Deploy</h2>
-            </Link>
           </div>
           {images.map((url, index) => (
               <Image
               onClick={() => openModal(index)}
               key={index}
                 alt="Next.js Conf photo"
-                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110 pb-5"
+                className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110 pb-5 cursor-zoom-in"
                 style={{ transform: "translate3d(0, 0, 0)" }}
                 src={url}
                 width={720}
@@ -154,7 +145,7 @@ const Main: NextPage<MainProps> = ({ images }) => {
                       key={index}
                       alt="Thumbnail image"
                       onClick={() => setSelectedImage(index)}
-                      className={`object-cover cursor-pointer rounded-lg ${
+                      className={`object-cover cursor-pointer rounded-lg  ${
                         selectedImage === index ? "ring-2 ring-blue-500" : ""
                       }`}
                       src={url}
