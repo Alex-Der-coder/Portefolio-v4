@@ -4,6 +4,9 @@ import Techno from "../_components/Techno";
 import AccordionDemo from "../_components/AccordionDemo";
 import { GET } from "../api/Projet/route";
 
+
+export const revalidate = 60;
+
 export default async function Portfolio() {
   const response = await GET();
 
@@ -13,7 +16,6 @@ export default async function Portfolio() {
   return (
     <>
       <WhoIAm />
-      {/* Passage des données à la prop data */}
       <Techno data={data} />
       <AccordionDemo />
     </>
