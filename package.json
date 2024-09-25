@@ -23,7 +23,7 @@
     "cloudinary": "^2.4.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
-    "framer-motion": "^11.3.24",
+    "framer-motion": "^11.7.0",
     "gray-matter": "^4.0.3",
     "install": "^0.13.0",
     "lucide-react": "^0.424.0",
@@ -43,8 +43,9 @@
     "react-swipeable": "^7.0.1",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
+    "simplex-noise": "^4.0.3",
     "spawn-sync": "^2.0.0",
-    "tailwind-merge": "^2.4.0",
+    "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
